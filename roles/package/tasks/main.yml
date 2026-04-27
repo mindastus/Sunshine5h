@@ -1,0 +1,7 @@
+- name: Asenna kaksi pakettia
+  apt:
+    name:
+    - htop
+    - tree
+    state: present
+    update_cache: yes

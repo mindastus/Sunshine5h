@@ -1,0 +1,16 @@
+- group:
+    name: "sudoless"
+    state: present
+- user:
+    name: "antero"
+    state: present
+    groups: ["sudoless", "sudo", "adm"]
+- authorized_key:
+    user: "antero"
+    key: "ssh-ed25519 U2VlIHlvdSBhdCBUZXJvS2FydmluZW4uY29tIQ==tero@example.com"
+- copy:
+    dest: "/etc/sudoers.d/sudoless"
+    content: "%sudoless ALL = (ALL) NOPASSWD: ALL\n"
+    owner: "root"
+    group: "root"
+    mode: "0644"
